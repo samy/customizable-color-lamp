@@ -2,9 +2,12 @@
 
 int DELAYVAL = 500; // Time (in milliseconds) to pause between pixels
 
+//PIN number for the potentiometer which manages the red color
 int RED_PIN = 10;
-int GREEN_PIN = 10;
-int BLUE_PIN = 10;
+//PIN number for the potentiometer which manages the green color
+int GREEN_PIN = 11;
+//PIN number for the potentiometer which manages the blue color
+int BLUE_PIN = 12;
 int pinsByColors[] = {RED_PIN, BLUE_PIN, GREEN_PIN};
 
 const int LED_NUMBERS = 3;
