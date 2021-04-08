@@ -49,8 +49,8 @@ void adjustLEDsColor() {
   pixels.clear(); // Set all pixel colors to 'off'
 
   for (int i = 0; i < LED_NUMBERS; i++) {
-    pixels.setPixelColor(i, pixels.Color(colorsLevels[RED], colorsLevels[BLUE],
-                                         colorsLevels[GREEN]));
+    pixels.setPixelColor(i, pixels.Color(colorsLevels[RED], colorsLevels[GREEN],
+                                         colorsLevels[BLUE]));
     pixels.show();   // Send the updated pixel colors to the hardware.
     delay(DELAYVAL); // Pause before next pass through loop
   }
