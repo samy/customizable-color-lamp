@@ -37,6 +37,7 @@ void setup() {
 void loop() {
   getLevelsFromPotentiometers();
   adjustLEDsColor();
+  delay(500);
 }
 
 void getLevelsFromPotentiometers() {
