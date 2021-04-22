@@ -26,6 +26,7 @@ int redLevel = 0;
 int blueLevel = 0;
 int greenLevel = 0;
 int colorsLevels[] = {redLevel, blueLevel, greenLevel};
+int previousColorsLevels[] = {redLevel, blueLevel, greenLevel};
 
 Adafruit_NeoPixel pixels(LED_NUMBERS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -35,14 +36,18 @@ void setup() {
 }
 
 void loop() {
-  getLevelsFromPotentiometers();
+  previousColorsLevels =  colorsLevels;
+  colorsLevels = getLevelsFromPotentiometers();
   adjustLEDsColor();
+  delay(DELAYVAL); // Pause before next pass through loop
 }
 
 void getLevelsFromPotentiometers() {
+  int levels[];
   for (int i = 0; i < 3; i++) {
-    colorsLevels[i] = round(255 * analogRead(pinsByColors[i]) / MAX_VALUE);
+    levels[i] = round(255 * analogRead(pinsByColors[i]) / MAX_VALUE);
   }
+  return levels;
 }
 
 void adjustLEDsColor() {
@@ -52,6 +57,4 @@ void adjustLEDsColor() {
     pixels.setPixelColor(i, pixels.Color(colorsLevels[RED], colorsLevels[GREEN], colorsLevels[BLUE]));
     pixels.show();   // Send the updated pixel colors to the hardware.
   }
-  delay(DELAYVAL); // Pause before next pass through loop
-
 }
